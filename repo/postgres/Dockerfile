@@ -1,0 +1,5 @@
+FROM postgres:16
+
+ENV POSTGRES_DB=citybus
+ENV POSTGRES_USER=citybus
+ENV POSTGRES_PASSWORD=citybus

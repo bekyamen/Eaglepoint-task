@@ -1,0 +1,10 @@
+{
+  "prompt": "A City Bus Operation and Service Coordination Platform for offline LAN use, supporting Passenger, Dispatcher, and Administrator roles. Passengers use an Angular interface to search routes and stops with intelligent autocomplete (keyword, pinyin, initial-letter matching) and ranked results based on frequency and stop popularity. Users can configure in-app notifications such as arrival reminders, missed check-ins, and quiet hours via a message center. Dispatchers manage workflow tasks like route approvals, reminder rules, and anomaly reviews using a state-machine workflow system with approvals, branching, escalation, and batch processing. Administrators manage system configuration including search ranking weights, templates, dictionaries, and cleaning rules. The backend is a Spring Boot modular monolith exposing REST APIs, using PostgreSQL with local backups and structured ingestion of HTML/JSON data with parsing, mapping, versioning, and audit logs. Data cleaning standardizes values, handles NULLs with traceability, and applies configurable rules. Authentication is local username/password with BCrypt hashing. Notifications run via internal queue and scheduled jobs without external services. Observability includes structured logs, metrics, trace IDs, and performance monitoring (P95 latency + queue backlog alerts). The system is fully offline, scalable for city-level transport data, and designed with modular maintainability.",
+  "project_type": "web (enterprise internal system)",
+  "frontend_language": "TypeScript, HTML, CSS",
+  "backend_language": "Java",
+  "backend_framework": "Spring Boot",
+  "architecture": "modular monolith (layered architecture)",
+  "database": "PostgreSQL",
+  "frontend_framework": "Angular"
+}

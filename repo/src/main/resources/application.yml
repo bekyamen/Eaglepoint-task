@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: city-bus-operation-platform
+  datasource:
+    url: jdbc:postgresql://localhost:5432/city_bus_db
+    username: citybus
+    password: citybus
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.security: INFO
+
+security:
+  jwt:
+    secret: change-this-secret-key-to-at-least-32-characters
+    expiration-ms: 3600000
