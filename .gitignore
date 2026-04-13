@@ -19,5 +19,5 @@ target/
 .env
 .env.*
 
-# Temp files
-.tmp/
+# # Temp files
+# .tmp/

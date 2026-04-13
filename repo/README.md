@@ -17,7 +17,7 @@ docker-compose up --build
 ```
 
 
-During `docker-compose up --build`, tests run automatically in the `tests` container before backend starts.
+`docker-compose up --build` starts the full stack (postgres + backend + frontend).
 
 ## Test Commands
 
@@ -25,6 +25,12 @@ Run all tests via script:
 
 ```bash
 ./run-tests.sh
+```
+
+Run tests in Docker (optional profile):
+
+```bash
+docker-compose --profile test up --build
 ```
 
 Backend tests only:
@@ -78,7 +84,7 @@ Frontend `/api/v1/*` requests are proxied by Nginx to `http://backend:8080/api/v
 Backend:
 
 ```bash
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 
 Frontend:
@@ -93,7 +99,7 @@ npm start
 Backend tests:
 
 ```bash
-./mvnw test
+mvn test
 ```
 
 Frontend tests:

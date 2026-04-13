@@ -1,14 +1,13 @@
 services:
   tests:
+    profiles: ["test"]
     build:
       context: .
       dockerfile: tests/Dockerfile
-    container_name: citybus-tests
     restart: "no"
 
   postgres:
     image: postgres:16
-    container_name: citybus-postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-citybus}
@@ -28,11 +27,8 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    container_name: citybus-backend
     restart: unless-stopped
     depends_on:
-      tests:
-        condition: service_completed_successfully
       postgres:
         condition: service_healthy
     environment:
@@ -40,10 +36,6 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-citybus}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-citybus}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-citybus}
-      SPRING_DATASOURCE_HIKARI_INITIALIZATION_FAIL_TIMEOUT: ${SPRING_DATASOURCE_HIKARI_INITIALIZATION_FAIL_TIMEOUT:-60000}
-      SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT: ${SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT:-30000}
-      SPRING_DATASOURCE_HIKARI_VALIDATION_TIMEOUT: ${SPRING_DATASOURCE_HIKARI_VALIDATION_TIMEOUT:-5000}
-      SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE: ${SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE:-20}
       SECURITY_JWT_SECRET: ${SECURITY_JWT_SECRET:-change-this-secret-key-to-at-least-32-characters}
       SECURITY_JWT_EXPIRATION_MS: ${SECURITY_JWT_EXPIRATION_MS:-3600000}
       SERVER_PORT: ${SERVER_PORT:-8080}
@@ -59,7 +51,6 @@ services:
     build:
       context: .
       dockerfile: frontend/Dockerfile
-    container_name: citybus-frontend
     restart: unless-stopped
     depends_on:
       backend:

@@ -16,6 +16,14 @@ export interface DataVersion {
   active: boolean;
 }
 
+export interface IngestionEntry {
+  id: string;
+  sourceName: string;
+  ingestStatus: string;
+  versionLabel: string;
+  receivedAt: string;
+}
+
 export interface AuditLog {
   id: string;
   moduleName: string;
@@ -33,8 +41,8 @@ export class AdminOpsService {
     return this.http.get<ApiResponse<ConfigEntry[]>>('/api/v1/config/templates');
   }
 
-  listIngestions(): Observable<ApiResponse<DataVersion[]>> {
-    return this.http.get<ApiResponse<DataVersion[]>>('/api/v1/admin/data/ingestions');
+  listIngestions(): Observable<ApiResponse<IngestionEntry[]>> {
+    return this.http.get<ApiResponse<IngestionEntry[]>>('/api/v1/admin/data/ingestions');
   }
 
   listAuditLogs(): Observable<ApiResponse<AuditLog[]>> {

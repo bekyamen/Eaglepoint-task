@@ -4,11 +4,6 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME:citybus}
     password: ${SPRING_DATASOURCE_PASSWORD:citybus}
     driver-class-name: org.postgresql.Driver
-    hikari:
-      initialization-fail-timeout: ${SPRING_DATASOURCE_HIKARI_INITIALIZATION_FAIL_TIMEOUT:60000}
-      connection-timeout: ${SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT:30000}
-      validation-timeout: ${SPRING_DATASOURCE_HIKARI_VALIDATION_TIMEOUT:5000}
-      maximum-pool-size: ${SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE:20}
   jpa:
     hibernate:
       ddl-auto: validate

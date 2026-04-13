@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { AdminOpsService, DataVersion } from '../../core/services/admin-ops.service';
+import { AdminOpsService, IngestionEntry } from '../../core/services/admin-ops.service';
 
 @Component({
   template: `
     <h2>Data Ingestion Dashboard</h2>
     <ul>
-      <li *ngFor="let version of (versions$ | async)">
-        {{ version.sourceName }} / {{ version.versionLabel }} / {{ version.active ? 'ACTIVE' : 'INACTIVE' }}
+      <li *ngFor="let ingestion of (ingestions$ | async)">
+        {{ ingestion.sourceName }} / {{ ingestion.versionLabel }} / {{ ingestion.ingestStatus }} / {{ ingestion.receivedAt | date:'short' }}
       </li>
     </ul>
   `
 })
 export class AdminIngestionPageComponent {
-  readonly versions$: Observable<DataVersion[]>;
+  readonly ingestions$: Observable<IngestionEntry[]>;
 
   constructor(adminOpsService: AdminOpsService) {
-    this.versions$ = adminOpsService.listIngestions().pipe(map((response) => response.data));
+    this.ingestions$ = adminOpsService.listIngestions().pipe(map((response) => response.data));
   }
 }
