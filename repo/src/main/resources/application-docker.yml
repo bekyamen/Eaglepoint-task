@@ -4,9 +4,10 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME:citybus}
     password: ${SPRING_DATASOURCE_PASSWORD:citybus}
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update   # ✅ FIXED
     open-in-view: false
 
 server:
