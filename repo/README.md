@@ -13,11 +13,11 @@ All services run in a private Docker network and support offline LAN execution.
 ## Run
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 
-`docker-compose up --build` starts the full stack (postgres + backend + frontend).
+`docker compose up --build` starts the full stack (postgres + backend + frontend).
 
 ## Test Commands
 
@@ -30,7 +30,7 @@ Run all tests via script:
 Run tests in Docker (optional profile):
 
 ```bash
-docker-compose --profile test up --build
+docker compose --profile test up --build
 ```
 
 Backend tests only:
@@ -68,7 +68,7 @@ POSTGRES_USER=citybus \
 POSTGRES_PASSWORD=citybus \
 POSTGRES_HOST_PORT=55432 \
 SECURITY_JWT_SECRET=replace-with-strong-secret \
-docker-compose up --build
+docker compose up --build
 ```
 
 ## Endpoints
